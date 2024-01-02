@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RNG</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 7'%3E%3Ctext y='10'%3E🌟%3C/text%3E%3C/svg%3E">
+
+
+  <style>
+    ::-webkit-scrollbar{
+        display: none;
+    }
+    ::selection{
+        background-color: rgb(180, 83, 99);
+    }
+    body {
+      margin: 0;
+      background-image: linear-gradient(to bottom, rgb(16, 16, 16), rgb(5, 16, 29));
+      display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+    color: rgb(223, 223, 223);
+    font-family: Helvetica;
+    }
+    .gi{
+        -webkit-user-select: none;
+        text-align: center;
+        font-size: 12em;
+        font-weight: bolder;
+        cursor: pointer;
+    }
+    
+    .desc{
+        font-size: x-small;
+        text-align: center;
+        max-width: 20vw;
+        margin: 0 auto;
+    }
+
+    p{
+        font-weight: 354;
+        text-align: justify;
+    }
+  </style>
+</head>
+<body>
+     <div class="gi">
+        <div id="random">..</div>  
+     </div>   
+     <div class="desc">
+        <p>📍A simple generator random number from 0-20 web, used as JS demo. Made using HTML CSS and JS</p>
+        <b>@Yosa : 1/2/24</b>
+     </div>
+
+  <script>
+    let paused = false;
+    let lstNumber;
+    let interval;
+    function generateRandomNumber() {
+      const element = document.getElementById('random');
+      interval = setInterval(() => {
+        if (!paused) {const number = Math.floor(Math.random() * 20);
+        lstNumber = number;
+        element.textContent = `${number}`;
+            }
+        }, 80);
+    }
+    generateRandomNumber();
+        const element = document.getElementById('random');
+        element.addEventListener('click', () => {
+        paused = !paused;
+        if(paused) {
+            clearInterval(interval);
+            element.textContent = `${lstNumber}`;
+        }else{
+            generateRandomNumber();
+        }
+        });
+  </script>
+</body>
+</html>
